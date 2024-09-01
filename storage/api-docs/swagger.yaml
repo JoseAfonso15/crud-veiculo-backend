@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: API de Veículos
+  version: 1.0.0
+  description: Documentação da API de crud de veículos.
+servers:
+  - url: https://teste-infosistemas.afonso-app.xyz/api
+    description: Servidor de produção
+paths:
+  /veiculos:
+    get:
+      summary: Lista todos os veículos
+      responses:
+        '200':
+          description: Lista de veículos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Veiculo'
+    post:
+      summary: Cria um novo veículo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Veiculo'
+      responses:
+        '201':
+          description: Veículo criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '422':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: object
+  /veiculos/{id}:
+    get:
+      summary: Mostra um veículo específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Veículo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '404':
+          description: Veículo não encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    put:
+      summary: Atualiza um veículo existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Veiculo'
+      responses:
+        '200':
+          description: Veículo atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '422':
+          description: Dados inválidos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: object
+    delete:
+      summary: Remove um veículo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Veículo deletado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '500':
+          description: Erro ao processar a solicitação
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  error:
+                    type: string
+components:
+  schemas:
+    Veiculo:
+      type: object
+      properties:
+        id:
+          type: integer
+        placa:
+          type: string
+          example: ABC1234
+        chassi:
+          type: string
+          example: '12345678901234567'
+        renavam:
+          type: string
+          example: '12345678901'
+        modelo:
+          type: string
+          example: Fusca
+        marca:
+          type: string
+          example: Volkswagen
+        ano:
+          type: integer
+          example: 1970
+      required:
+        - placa
+        - chassi
+        - renavam
+        - modelo
+        - marca
+        - ano
