@@ -9,8 +9,8 @@ Requisitos
 
 Instalação
     Clone o Repositório:
-        - git clone https://github.com/seu-usuario/seu-repositorio.git
-        - cd seu-repositorio
+        - git clone https://github.com/JoseAfonso15/crud-veiculo-backend.git
+        - cd crud-veiculo-backend
 
 Instale as Dependências:
     - composer install
@@ -26,8 +26,6 @@ Execute as Migrações e Seeders:
     - php artisan db:seed --class=VeiculoSeeder
 
 Documentação Swagger
-    -A documentação da API está disponível no formato Swagger YAML. O arquivo swagger.yaml fornece uma descrição completa da API, incluindo todos os endpoints detalhes sobre os modelos de dados.
-
-    -Localização do arquivo Swagger: swagger.yaml - Localizado na raiz do projeto.
-
-    -Para visualizar a documentação Swagger, você pode usar ferramentas como Swagger Editor ou Swagger UI.
+    A documentação da API está disponível no formato Swagger YAML. O arquivo swagger.yaml fornece uma descrição completa da API, incluindo todos os endpoints   detalhes sobre os modelos de dados.
+    Localização do arquivo Swagger: swagger.yaml - Localizado na raiz do projeto.
+    Para visualizar a documentação Swagger, você pode usar ferramentas como Swagger Editor ou Swagger UI.
